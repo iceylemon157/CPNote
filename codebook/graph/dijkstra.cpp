@@ -2,7 +2,7 @@ priority_queue<pii, vector<pii>, greater<pii>> pq;
 vector<pii> vc[maxn];
 int dis[maxn];
 void dij(int st) {
-	mem(dis, 0x3f);
+	memset(dis, 0x3f, sizeof(dis));
 	dis[st] = 0;
 	pq.push({0, st});
 	while(!pq.empty()) {

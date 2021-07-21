@@ -19,6 +19,6 @@ void tarjan(int x) {
             scc[t] = sccid;
             inst[t] = 0;
             if(t == x) return;
-        };
+        }
     }
 }

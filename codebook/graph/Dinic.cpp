@@ -10,7 +10,7 @@ struct Dinic {
 	vector<edge> g[N];
 	void init(int a, int b, int c) {
 		n = a, s = b, t = c;
-		FFOR(i, 0, n) g[i].clear();
+		for(int i = 0; i <= n; i ++) g[i].clear();
 	}
 	void add(int a, int b, int v) {
 		g[a].pb(edge(b, v, (int)g[b].size()));
