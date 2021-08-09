@@ -16,5 +16,7 @@ void init() {
 }
 
 inline int C(int x, int y) {
+    if(x < y) return 0LL;
+    if(x == y or y == 0) return 1LL;
     return J[x] * inJ[y] % mod * inJ[x - y] % mod;
 }
