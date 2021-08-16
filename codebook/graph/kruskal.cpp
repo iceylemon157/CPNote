@@ -2,7 +2,7 @@ struct E {
     int a, b, v;
 } e[maxn];
 int pa[maxn], sz[maxn];
-void init_dsu(int n) { for(int i = 1; i <= n; i ++) pa[i] = i; }
+void init_dsu(int n) { for(int i = 1; i <= n; i ++) pa[i] = i, sz[i] = 1; }
 int get(int x) { return pa[x] == x? x : pa[x] = get(pa[x]); }
 void uni(int a, int b) {
     a = get(a), b = get(b);
@@ -12,7 +12,7 @@ void uni(int a, int b) {
     pa[a] = b;
 }
 int kruskal(int n, int m) {
-    init_dsu();
+    init_dsu(n);
     sort(e + 1, e + m + 1, [](E a, E b) {
         return a.v < b.v;
     });
