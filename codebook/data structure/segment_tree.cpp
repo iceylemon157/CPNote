@@ -2,7 +2,6 @@ struct segt {
 	#define ls (idx << 1)
 	#define rs (idx << 1 | 1)
 	static const int mxN = 2e5 + 50;
-	static int n;
 	int seg[mxN * 4], tag[mxN * 4];
 	inline void upd(int idx) {
 		seg[idx] = seg[ls] + seg[rs];
