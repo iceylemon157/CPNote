@@ -2,6 +2,7 @@ vector<int> prime;
 int mu[maxn], fac[maxn];
 void sieve(int mxN) {
 	// This is a O(N) sieve
+	mu[1] = 1;
 	for(int i = 2; i <= mxN; i ++) {
 		if(!fac[i]) {
 			fac[i] = i;

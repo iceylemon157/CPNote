@@ -11,4 +11,20 @@ struct BIT {
 	inline void modi(int x, int v) {
 		for(; x <= n; x += low(x)) bit[x] += v;
 	}
+	inline int kth(int k) {
+		int ret = 0, sum = 0;
+		for(int i = 20; i >= 0; i --) {
+			if(ret + (1 << i) <= n and sum + bit[ret + (1 << i)] < k) {
+				ret += (1 << i);
+				sum += bit[ret];
+			}
+		}
+		for(int i = 0; i < 20; i ++) {
+			if(sum + bit[ret + (1 << i)] >= k) {
+				ret += (1 << i);
+				break;
+			}
+		}
+		return ret;
+	}
 };
