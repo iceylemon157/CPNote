@@ -6,6 +6,9 @@ struct Mat {
 		r = _r; c = _c;
 		memset(m, 0, sizeof(m));
 	}
+	int* operator[](int x) {
+        return m[x];
+    }
 	Mat operator+(Mat a) {
 		Mat ret(r, c);
 		for(int i = 0; i < r; i ++) {
