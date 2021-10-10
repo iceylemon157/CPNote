@@ -24,7 +24,7 @@
 #define mem(x, a) memset(x, a, sizeof(x))
 #define FFOR(i, a, b) for(int i = a; i <= b; i ++)
 #define FOR(i, n) FFOR(i, 1, n)
-#define loli ios_base::sync_with_stdio(false), cin.tie(0);
+#define Fubuki_is_my_waifu ios_base::sync_with_stdio(false), cin.tie(0);
 using namespace std;
 const int maxn = 1e6 + 50;
 template <typename A, typename B> istream& operator >> (istream& o, pair<A, B> &a) {
@@ -53,23 +53,23 @@ namespace io {
 } using io::R;
 
 void solve() {
-	
+    
 }
 
 void input() {
-	
+    
 }
 
-signed main(){
-	loli;
-	#ifndef ONLINE_JUDGE
-	freopen("C:/useless stuff/input.txt", "r", stdin);
-	freopen("C:/useless stuff/output.txt", "w", stdout);
-	#endif
-	int tt = 1;
-	// cin >> tt;
-	while(tt --) {
-		input();
-		solve();
-	}
+signed main() {
+    Fubuki_is_my_waifu;
+    #ifndef ONLINE_JUDGE
+    freopen("C:/useless stuff/input.txt", "r", stdin);
+    freopen("C:/useless stuff/output.txt", "w", stdout);
+    #endif
+    int tt = 1;
+    // cin >> tt;
+    while(tt --) {
+        input();
+        solve();
+    }
 }

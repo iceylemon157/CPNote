@@ -4,11 +4,13 @@ struct BIT {
 	int bit[mxN], n;
 	inline void init(int _n) { n = _n; memset(bit, 0, sizeof(bit)); }
 	inline int qry(int x) {
+		if(!x) return 0;
 		int ret = 0;
 		for(; x > 0; x -= low(x)) ret += bit[x];
 		return ret;
 	}
 	inline void modi(int x, int v) {
+		if(!x) return;
 		for(; x <= n; x += low(x)) bit[x] += v;
 	}
 	inline int kth(int k) {
