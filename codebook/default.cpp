@@ -1,4 +1,5 @@
 #include "iostream"
+#include "iomanip"
 #include "cstdio"
 #include "cmath"
 #include "cstring"
@@ -10,6 +11,8 @@
 #include "queue"
 #include "stack"
 #include "cassert"
+#include "functional"
+#include "ctime"
 #define int long long
 #define ll long long
 #define f first
@@ -20,8 +23,10 @@
 #define Mod 998244353
 #define pb push_back
 #define pii pair<int, int>
+#define sz(x) (int)x.size()
 #define all(x) x.begin(), x.end()
 #define mem(x, a) memset(x, a, sizeof(x))
+#define print(v) for(auto FBK : v) cout << FBK << ' '; cout << '\n';
 #define FFOR(i, a, b) for(int i = a; i <= b; i ++)
 #define FOR(i, n) FFOR(i, 1, n)
 #define Fubuki_is_my_waifu ios_base::sync_with_stdio(false), cin.tie(0);
@@ -68,6 +73,7 @@ signed main() {
     #endif
     int tt = 1;
     // cin >> tt;
+    // R(tt);
     while(tt --) {
         input();
         solve();
