@@ -22,6 +22,7 @@
 #define mod 1000000007
 #define Mod 998244353
 #define pb push_back
+#define eb emplace_back
 #define pii pair<int, int>
 #define sz(x) (int)x.size()
 #define all(x) x.begin(), x.end()
@@ -61,7 +62,7 @@ void solve() {
     
 }
 
-void input() {
+void init() {
     
 }
 
