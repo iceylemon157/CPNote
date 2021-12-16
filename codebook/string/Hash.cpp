@@ -22,7 +22,7 @@ inline bool get(vector<int> &sum, int l, int r, int tar) {
 	// get the hash value of substr of s[L:R]
 	// ret equal pw[l - 1] * hash value
 	int ret = sum[r] - sum[l - 1];
-	if(tag * pw[l - 1] % mod == ret) return 1;
+	if(tar * pw[l - 1] % mod == ret) return 1;
 	return 0;
 }
 
