@@ -52,9 +52,14 @@ namespace io {
         return (l != r) ? *(l++) : EOF;
     }
     void R(int &x) {
+        bool neg = 0;
         x = 0; char ch = gc();
-        while(!isdigit(ch)) ch = gc();
+        while(!isdigit(ch)) {
+            if(ch == '-') neg = 1;
+            ch = gc();
+        }
         while(isdigit(ch)) x = x * 10 + ch - '0', ch = gc();
+        if(neg) x = -x;
     }
 } using io::R;
 
