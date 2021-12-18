@@ -29,6 +29,8 @@ struct AC_automaton {
                     q.push(to), tmp = fail[id];
                     while(tmp and !ch[tmp][i]) tmp = fail[tmp];
                     fail[to] = ch[tmp][i];
+                    // fail[id] 是 id 的子字串
+                    // cnt[id] += cnt[fail[id]];
                 }
                 else to = ch[fail[id]][i];
             }
@@ -36,11 +38,16 @@ struct AC_automaton {
         }
     }
     inline void count(string &s) {
-        int id = 0, ret = 0;
+        int id = 0, ret = 0, tid;
         for(int i = 0; i < (int)s.size(); i ++) {
             while(id and !ch[id][s[i] - 'a']) id = fail[id];
             if(ch[id][s[i] - 'a']) id = ch[id][s[i] - 'a'];
             dp[id] ++;
+            tid = id;
+            while(tid) {
+                // do something
+                tid = fail[tid];
+            }
         }
     }
     inline void topo() {
