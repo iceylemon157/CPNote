@@ -14,19 +14,12 @@ struct BIT {
 		for(; x <= n; x += low(x)) bit[x] += v;
 	}
 	inline int kth(int k) {
-		int ret = 0, sum = 0;
-		for(int i = 20; i >= 0; i --) {
-			if(ret + (1 << i) <= n and sum + bit[ret + (1 << i)] < k) {
-				ret += (1 << i);
-				sum += bit[ret];
+		int ret = 0;
+		for(int i = 1 << 20; i > 0; i >>= 1) {
+			if(ret + i <= n and bit[ret + i] < k) {
+				k -= bit[ret += i];
 			}
 		}
-		for(int i = 0; i < 20; i ++) {
-			if(sum + bit[ret + (1 << i)] >= k) {
-				ret += (1 << i);
-				break;
-			}
-		}
-		return ret;
+		return ret + 1;
 	}
 };
