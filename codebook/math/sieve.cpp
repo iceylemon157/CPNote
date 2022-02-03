@@ -15,10 +15,10 @@ void sieve(int mxN) {
 			if(i * j > mxN) break;
 			fac[i * j] = j;
 			mu[i * j] = -mu[i];
-			phi[i * j] = phi[i] * j;
+			phi[i * j] = phi[i] * (j - 1);
 			if(i % j == 0) {
 				mu[i * j] = 0;
-				phi[i * j] = phi[i] * (j - 1);
+				phi[i * j] = phi[i] * j;
 				break;
 			}
 		}
