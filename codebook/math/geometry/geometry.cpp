@@ -1,12 +1,16 @@
-typedef complex<double> pdd;
-#define x real()
-#define y imag()
+typedef pair<double, double> pdd;
+#define x first
+#define y second
 const double eps = 1e-10;
 
-inline double dot(pdd a, pdd b) { return (conj(a) * b).x; }
-inline double cross(pdd a, pdd b) { return (conj(a) * b).y; }
-inline double cross(pdd a, pdd o, pdd b) { return cross(a - o, b - o); }
-inline double dist(pdd a, pdd b) { return abs(a - b); }
+pdd operator+(pdd a, pdd b) { return pdd(a.x + b.x, a.y + b.y); }
+pdd operator-(pdd a, pdd b) { return pdd(a.x - b.x, a.y - b.y); }
+pdd operator*(pdd a, double b) { return pdd(a.x * b, a.y * b); }
+pdd operator/(pdd a, double b) { return pdd(a.x / b, a.y / b); }
+inline double dot(pdd a, pdd b) { return a.x * b.x + a.y * b.y; }
+inline double cross(pdd a, pdd b) { return a.x * b.y - a.y * b.x; }
+inline double cross(pdd o, pdd a, pdd b) { return cross(a - o, b - o); }
+inline double dist(pdd a, pdd b) { return sqrt(dot(a, b)); }
 inline double dist(pdd a, pdd b, pdd c, bool issegment = false) {
     double d = cross(b - a, c - a) / dist(a, b);
     if(issegment) {
