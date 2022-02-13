@@ -4,49 +4,33 @@ dp[i] = min{dp[j] + a[i] * b[j]}
 
 */
 
-double pt[maxn];
-deque<int> dq;
-
-struct segment {
+struct seg {
     int m, k;
-    int val(int x) { return m * x + k; }
-} tr[maxn];
-
-inline double get(int x, int y) {
-    segment a = tr[x], b = tr[y];
-    return 1.0 * (b.k - a.k) / (1.0 * (a.m - b.m));
-}
-
-bool upd(int x) {
-    int y = dq.back();
-    if((int)dq.size() == 1) {
-        if(tr[y].val(0) < tr[x].val(0)) {
-            dq.pop_back();
-            return 1;
-        }
+    seg(int x, int y) {
+        m = x, k = y;
     }
-    else {
-        if(get(y, x) <= pt[dq[dq.size() - 2]]) {
-            dq.pop_back();
-            return 1;
-        }
+    int val(const int x) {
+        return m * x + k;
     }
-    return 0;
+};
+deque<seg> dq;
+bool check(seg &L1, seg &L2, seg L) {
+    return (L.m - L2.m) * (L.k - L1.k) <= (L.m - L1.m) * (L.k - L2.k);
 }
-
+ 
 void solve() {
-    int ans = 0;
-    dq.pb(1);
-    tr[1] = {-b[1], dp[1]};
-    pt[1] = inf;
-    FFOR(i, 2, n) {
-        while(pt[dq[0]] < 1.0 * a[i]) dq.pop_front();
-        dp[i] = -tr[dq.front()].val(a[i]);
-        tr[i] = {-b[i], -dp[i]};
-        pt[i] = inf;
-        while(!dq.empty() and upd(i));
-        if(!dq.empty()) pt[dq.back()] = get(dq.back(), i);
-        dq.pb(i); 
+    int n;
+    vector<int> a(n + 1), b(n + 1), dp(n + 1);
+    dq.emplace_back(seg(-b[0], -dp[0]));
+    for(int i = 1; i <= n; i ++) {
+        while((int)dq.size() >= 2 and dq[0].val(a[i]) < dq[1].val(a[i])) {
+            dq.pop_front();
+        }
+        dp[i] = -dq[0].val(a[i]);
+        seg tmp = seg(-b[i], -dp[i]);
+        while((int)dq.size() >= 2 and check(dq[dq.size() - 2], dq.back(), tmp)) {
+            dq.pop_back();
+        }
+        dq.emplace_back(tmp);
     }
-    cout << dp[n] << endl;
 }
