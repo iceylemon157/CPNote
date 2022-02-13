@@ -22,7 +22,7 @@ struct Cost_Flow {
     pair<int, int> flow() {
         int flow = 0LL, cost = 0LL;
         while(1) {
-            FFOR(i, 0, n) dis[i] = inf;
+            for(int i = 0; i <= n; i ++) dis[i] = inf;
             inQ = 0;
             int inf = dis[1];
             dis[s] = 0LL;

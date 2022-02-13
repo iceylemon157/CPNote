@@ -13,14 +13,12 @@
 #include "cassert"
 #include "functional"
 #include "ctime"
+#include "random"
 #define int long long
 #define ll long long
 #define f first
 #define s second
 #define endl '\n'
-#define INF 0x3f3f3f3f
-#define mod 1000000007
-#define Mod 998244353
 #define pb push_back
 #define eb emplace_back
 #define pii pair<int, int>
@@ -28,10 +26,13 @@
 #define all(x) x.begin(), x.end()
 #define mem(x, a) memset(x, a, sizeof(x))
 #define print(v) for(auto FBK : v) cout << FBK << ' '; cout << '\n';
+#define discrete(v) sort(all(v)); v.resize(unique(all(v)) - v.begin());
 #define FFOR(i, a, b) for(int i = a; i <= b; i ++)
 #define FOR(i, n) FFOR(i, 1, n)
 #define Fubuki_is_my_waifu ios_base::sync_with_stdio(false), cin.tie(0);
 using namespace std;
+const int mod = 1e9 + 7;
+const int Mod = 998244353;
 const int maxn = 1e6 + 50;
 template <typename A, typename B> istream& operator >> (istream& o, pair<A, B> &a) {
     return o >> a.f >> a.s;
@@ -50,6 +51,11 @@ namespace io {
     inline char gc() {
         if (l == r) init();
         return (l != r) ? *(l++) : EOF;
+    }
+    void R(char &x) {
+        char ch = gc();
+        while(ch < 33 or ch > 128) ch = gc();
+        x = ch;
     }
     void R(int &x) {
         bool neg = 0;
@@ -81,7 +87,7 @@ signed main() {
     // cin >> tt;
     // R(tt);
     while(tt --) {
-        input();
+        init();
         solve();
     }
 }

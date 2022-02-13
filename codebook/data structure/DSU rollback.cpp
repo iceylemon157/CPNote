@@ -15,13 +15,13 @@ struct DSU {
     inline void uni(int a, int b) {
         a = get(a), b = get(b);
         if(a == b) {
-            stk.emplace_back({a, b});
+            stk.emplace_back(a, b);
             return;
         }
         if(sz[a] > sz[b]) swap(a, b);
         pa[a] = b;
         sz[b] += sz[a];
-        stk.emplace_back({a, b});
+        stk.emplace_back(a, b);
         cnt --;
     }
     inline void del() {
