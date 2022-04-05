@@ -21,6 +21,7 @@ inline double dist(pdd a, pdd b, pdd c, bool issegment = false) {
     }
     return abs(d);
 }
+inline double dist2(pdd a, pdd b) { return dot(a, b); }
 int sign(double a) {
     return (fabs(a) < eps? 0 : (a > 0? 1 : -1));
 }
@@ -36,7 +37,6 @@ istream& operator>> (istream& is, complex<T>& p) {
     return is;
 } 
 pdd p[maxn];
-
 bool segment_intersection(pdd a, pdd b, pdd c, pdd d) {
     for(int i = 1; i <= 2; i ++) {
         double da = cross(b - a, c - a);
@@ -49,4 +49,16 @@ bool segment_intersection(pdd a, pdd b, pdd c, pdd d) {
         swap(b, d);
     }
     return true;
+}
+bool polar_cmp(pdd a, pdd b) {
+    #define is_neg(k) (sign(k.s) < 0 or (sign(k.s) == 0 && sign(k.f) < 0))
+    int A = is_neg(a), B = is_neg(b);
+    if(A != B) return A < B;
+    if(sign(cross(a, b)) == 0) return dist2(a) < dist2(b);
+    return sign(cross(a, b)) > 0;
+}
+bool btw(pdd a, pdd b, pdd c) {
+    // segment ab, check c in or not
+    if(cross(a - c, b - c)) return 0;
+    return sign(dot(a - c, b - c)) <= 0;
 }

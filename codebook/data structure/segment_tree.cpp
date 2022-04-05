@@ -6,11 +6,6 @@ struct segt {
 	inline void upd(int idx) {
 		seg[idx] = seg[ls] + seg[rs];
 	}
-	void init(int _n) {
-		n = _n;
-		memset(tag, 0, sizeof(tag));
-		memset(seg, 0, sizeof(seg));
-	}
 	void build(int l = 1, int r = n, int idx = 1) {
 		if(l == r) {
 			// seg[idx] = a[l];

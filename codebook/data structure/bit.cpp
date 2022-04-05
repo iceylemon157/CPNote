@@ -1,8 +1,8 @@
 struct BIT {
-	static const int mxN = 2e5 + 50;
 	#define low(x) (x & -x)
-	int bit[mxN], n;
-	inline void init(int _n) { n = _n; memset(bit, 0, sizeof(bit)); }
+	int n;
+    vector<int> bit;
+    inline void init(int _n) { n = _n; bit.resize(n + 1); }
 	inline int qry(int x) {
 		if(!x) return 0;
 		int ret = 0;
