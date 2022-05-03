@@ -13,3 +13,5 @@
 * 演算法中的線性代數.pdf
 * 組合賽局理論.pdf
 * 動態規劃與優化：https://oosheepyerd79135.gitbook.io/iceylemon_cp/simple-note/dynamic-programming
+* sqrt.md 那些可愛的根號算法
+* classic_tricks.md 關於那些經典技巧
