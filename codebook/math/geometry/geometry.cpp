@@ -29,13 +29,6 @@ int ori(pdd a, pdd b, pdd c) {
     // vector ab to vector ac
     return sign(cross(b - a, c - a));
 }
-template<class T>
-istream& operator>> (istream& is, complex<T>& p) {
-    T a, b;
-    is >> a >> b;
-    p = {a, b};
-    return is;
-} 
 pdd p[maxn];
 bool segment_intersection(pdd a, pdd b, pdd c, pdd d) {
     for(int i = 1; i <= 2; i ++) {
@@ -54,7 +47,7 @@ bool polar_cmp(pdd a, pdd b) {
     #define is_neg(k) (sign(k.s) < 0 or (sign(k.s) == 0 && sign(k.f) < 0))
     int A = is_neg(a), B = is_neg(b);
     if(A != B) return A < B;
-    if(sign(cross(a, b)) == 0) return dist2(a) < dist2(b);
+    if(sign(cross(a, b)) == 0) return dist2(a) < dist2(b); // might be wrong
     return sign(cross(a, b)) > 0;
 }
 bool btw(pdd a, pdd b, pdd c) {

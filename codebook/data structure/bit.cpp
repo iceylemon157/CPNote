@@ -2,7 +2,11 @@ struct BIT {
 	#define low(x) (x & -x)
 	int n;
     vector<int> bit;
-    inline void init(int _n) { n = _n; bit.resize(n + 1); }
+    BIT(){}
+    BIT(int x) {
+    	n = x;
+    	bit.resize(n + 1);
+    }
 	inline int qry(int x) {
 		if(!x) return 0;
 		int ret = 0;

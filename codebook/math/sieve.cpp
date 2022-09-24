@@ -1,6 +1,6 @@
 const int mxN = 1e7 + 50;
 int mu[mxN], fac[mxN], phi[mxN];
-vector<int> prime;
+std::vector<int> prime;
 void sieve(int mxN) {
 	// This is a O(N) sieve
 	mu[1] = phi[1] = 1;
