@@ -1,8 +1,9 @@
 struct DSU {
 	const static int mxN = 2e5 + 50;
 	int n, pa[mxN], sz[mxN];
-	void init(int _n) {
-		n = _n;
+	DSU(){}
+	DSU(int x) {
+		n = x;
 		for(int i = 0; i <= n; i ++) pa[i] = i, sz[i] = 1;
 	}
 	inline bool same(int a, int b) { return (get(a) == get(b)); }
