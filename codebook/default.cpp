@@ -73,10 +73,6 @@ void solve() {
     
 }
 
-void init() {
-    
-}
-
 signed main() {
     Fubuki_is_my_waifu;
     #ifndef ONLINE_JUDGE
@@ -87,7 +83,6 @@ signed main() {
     // cin >> tt;
     // R(tt);
     while(tt --) {
-        init();
         solve();
     }
 }
