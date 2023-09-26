@@ -20,7 +20,7 @@ int BSGS(int a, int b, int m) {
         vals[cur] = q;
         cur = (cur * 1ll * a) % m;
     }
-	for (int p = 1, cur = k; p <= n; ++p) {
+    for (int p = 1, cur = k; p <= n; ++p) {
         cur = (cur * 1ll * an) % m;
         if (vals.count(cur)) {
             int ans = n * p - vals[cur] + add;
