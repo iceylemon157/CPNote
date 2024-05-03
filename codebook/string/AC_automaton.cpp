@@ -10,7 +10,7 @@ struct AC_automaton {
     }
     inline int insert(string s) {
         int id = 0;
-        for(int i = 0; i < (int)s.size(); i ++) {
+        for (int i = 0; i < (int)s.size(); i ++) {
             if(!ch[id][s[i] - 'a']) ch[id][s[i] - 'a'] = ++ tot;
             id = ch[id][s[i] - 'a'];
         }
@@ -20,12 +20,12 @@ struct AC_automaton {
     inline void build_fail() {
         // build AC after insert all strings
         queue<int> q;
-        for(int i = 0; i < mxW; i ++) if(ch[0][i]) q.push(ch[0][i]);
-        while(!q.empty()) {
+        for (int i = 0; i < mxW; i ++) if(ch[0][i]) q.push(ch[0][i]);
+        while (!q.empty()) {
             int id = q.front(); q.pop();
-            for(int i = 0; i < mxW; i ++) {
+            for (int i = 0; i < mxW; i ++) {
                 int &to = ch[id][i], tmp;
-                if(ch[id][i]) {
+                if (ch[id][i]) {
                     q.push(to), tmp = fail[id];
                     while(tmp and !ch[tmp][i]) tmp = fail[tmp];
                     fail[to] = ch[tmp][i];
@@ -39,12 +39,12 @@ struct AC_automaton {
     }
     inline void count(string &s) {
         int id = 0, ret = 0, tid;
-        for(int i = 0; i < (int)s.size(); i ++) {
-            while(id and !ch[id][s[i] - 'a']) id = fail[id];
+        for (int i = 0; i < (int)s.size(); i ++) {
+            while (id and !ch[id][s[i] - 'a']) id = fail[id];
             if(ch[id][s[i] - 'a']) id = ch[id][s[i] - 'a'];
             dp[id] ++;
             tid = id;
-            while(tid) {
+            while (tid) {
                 // do something
                 tid = fail[tid];
             }
@@ -52,12 +52,12 @@ struct AC_automaton {
     }
     inline void topo() {
         queue<int> q;
-        FFOR(i, 0, tot) if(!in[i]) q.push(i);
-        while(!q.empty()) {
+        for (int i = 0; i <= tot; i ++) if (!in[i]) q.push(i);
+        while (!q.empty()) {
             int id = q.front(); q.pop();
             dp[fail[id]] += dp[id];
             in[fail[id]] --;
-            if(!in[fail[id]]) q.push(fail[id]);
+            if (!in[fail[id]]) q.push(fail[id]);
         }
     }
 } AC;
