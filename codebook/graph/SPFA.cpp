@@ -6,15 +6,15 @@ void SPFA(int s) {
     queue<int> q;
     q.push(s);
     dis[s] = 0; inq[s] = 1;
-    while(!q.empty()) {
+    while (!q.empty()) {
         int a = q.front();
         q.pop();
         inq[a] = 0;
-        for(auto p : vc[a]) {
+        for (auto p : vc[a]) {
             int b = p.f, v = p.s;
-            if(dis[b] > dis[a] + v) {
+            if (dis[b] > dis[a] + v) {
                 dis[b] = dis[a] + v;
-                if(!inq[b]) q.push(b);
+                if (!inq[b]) q.push(b);
             }
         }
     }

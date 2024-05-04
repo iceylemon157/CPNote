@@ -14,7 +14,7 @@ struct SW {
         vis.resize(n);
         del.resize(n);
         adj.resize(n);
-        for(int i = 0; i < n; i ++) {
+        for (int i = 0; i < n; i ++) {
             adj[i].resize(n);
             fill(all(adj[i]), 0);
         }
@@ -27,19 +27,19 @@ struct SW {
         fill(all(weight), 0);
         fill(all(vis), 0);
         s = t = -1;
-        while(true) {
+        while (true) {
             int mx = -1, mx_id = 0;
-            for(int i = 0; i < n; i ++) {
-                if(!del[i] and !vis[i] and mx < weight[i]) {
+            for (int i = 0; i < n; i ++) {
+                if (!del[i] and !vis[i] and mx < weight[i]) {
                     mx_id = i;
                     mx = weight[i];
                 }
             }
-            if(mx == -1) break;
+            if (mx == -1) break;
             vis[mx_id] = 1;
             s = t; t = mx_id;
-            for(int i = 0; i < n; i ++) {
-                if(!vis[i] and !del[i]) {
+            for (int i = 0; i < n; i ++) {
+                if (!vis[i] and !del[i]) {
                     weight[i] += adj[mx_id][i];
                 }
             }
@@ -47,12 +47,12 @@ struct SW {
     }
     int solve() {
         int ret = INF;
-        for(int i = 0; i < n - 1; i ++) {
+        for (int i = 0; i < n - 1; i ++) {
             int x, y;
             search(x, y);
             ret = min(ret, weight[y]);
             del[y] = 1;
-            for(int j = 0; j < n; j ++) {
+            for (int j = 0; j < n; j ++) {
                 adj[x][j] += adj[y][j];
                 adj[j][x] += adj[y][j];
             }

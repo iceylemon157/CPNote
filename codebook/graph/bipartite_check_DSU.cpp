@@ -9,7 +9,7 @@ struct DSU {
         pa.resize(n + 1);
         sz.resize(n + 1);
         val.resize(n + 1);
-        for(int i = 0; i <= n; i ++) {
+        for (int i = 0; i <= n; i ++) {
             pa[i] = i;
             sz[i] = 1;
             val[i] = 0;
@@ -25,8 +25,8 @@ struct DSU {
         // If after connect a, b the graph is bipartite: true
         int x = get(a), y = get(b);
         int dx = dist(a), dy = dist(b);
-        if(x == y) return (dx != dy);
-        if(sz[x] > sz[y]) swap(x, y), swap(dx, dy);
+        if (x == y) return (dx != dy);
+        if (sz[x] > sz[y]) swap(x, y), swap(dx, dy);
         sz[y] += sz[x];
         pa[x] = y;
         val[x] = dx ^ dy ^ 1;
